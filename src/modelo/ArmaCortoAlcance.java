@@ -12,6 +12,6 @@ public class ArmaCortoAlcance extends Arma {
 	public void atacar(Demonio demonio, int distanciaAMi) {
 		demonio.serAtacado(this,distanciaAMi);
 	}
-	//xd
+	//xds
 
 }
