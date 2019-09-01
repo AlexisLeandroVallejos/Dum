@@ -8,17 +8,45 @@ public class Marine {
 	private int cantidadDeCartuchos;
 	
 	public void equipaArma(int atajo) {
-		armaActiva = inventario.get(atajo);
+		armaActiva = obtenerArma(atajo);
+	}
+
+	public Arma obtenerArma(int atajo) {
+		return inventario.get(atajo);
 	}
 	
 	public void recargarArma(int atajo) {
-		if(cantidadDeCartuchos >= 1) {
-			inventario.get(atajo).recargar();
-			cantidadDeCartuchos--;
-		}
+		obtenerArma(atajo).recargar(this);
 	}
 	
-	public void atacarDemonio(Demonio demonio, int distanciaAMi) {
-		armaActiva.atacar(demonio,distanciaAMi);
+	public boolean tieneCartuchos() {
+		return cantidadDeCartuchos > 0;
 	}
+
+	public void usarCartucho() {
+		cantidadDeCartuchos--;
+	}
+	
+	public void atacarA(Demonio demonio, int distanciaAlDemonio) {
+		demonio.serAtacadoPor(this, distanciaAlDemonio);
+	}
+
+	public Arma getArmaActiva() {
+		return armaActiva;
+	}
+	
+	public void recompensa(ArmaLargoAlcance arma) {
+		cantidadDeCartuchos++;
+		if(!algunaArmaConLaMismaDescripcion(arma)) {
+			inventario.add(arma);
+		}
+	}
+
+	public boolean algunaArmaConLaMismaDescripcion(Arma otraArma) {
+		return inventario.stream()
+				.anyMatch(arma -> arma.tieneIgualDescripcion(otraArma));
+	}
+
+	
+	
 }

@@ -1,11 +1,31 @@
 package modelo;
 
-public class Jefe extends Demonio {
+import java.util.Comparator;
+import java.util.List;
 
+public class Jefe extends Demonio {
+	
+	private int cantidadDeAtaquesParaEliminarme;
+	private List<Ataque> ataques; 
+	
 	@Override
-	public void serAtacado(Arma arma, int distanciaAMi) {
-		// TODO Auto-generated method stub
-		
+	public void serAtacadoPor(Marine marine, int distanciaAMi) {
+		if(marine.getArmaActiva().puedeAtacarJefe()) {
+			cantidadDeAtaquesParaEliminarme--;
+		}	
+	}
+	
+	@Override
+	public boolean estoyMuerto() {
+		return cantidadDeAtaquesParaEliminarme <= 0;
+	}
+	
+	public int getDanio() {
+		return ataques.stream()
+				.sorted(Comparator.comparing(Ataque::getDanio)) //ordenar con reversed() si es mayor/menor
+				.findFirst()
+				.get()
+				.getDanio();
 	}
 
 }

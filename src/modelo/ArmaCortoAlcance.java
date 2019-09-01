@@ -4,14 +4,12 @@ public class ArmaCortoAlcance extends Arma {
 	private int danio;
 
 	@Override
-	public void recargar() {
-
+	public int getDanio(int distanciaAlObjetivo) {
+		return danio;
 	}
 
-	@Override
-	public void atacar(Demonio demonio, int distanciaAMi) {
-		demonio.serAtacado(this,distanciaAMi);
+	public void setDanio(int danio) {
+		this.danio = danio;
 	}
-	//xds
 
 }
