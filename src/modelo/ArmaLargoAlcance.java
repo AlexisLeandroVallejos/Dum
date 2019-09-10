@@ -33,5 +33,17 @@ public class ArmaLargoAlcance extends Arma {
 	public boolean tieneMuniciones() {
 		return municiones > 0;
 	}
+	
+	public int getMuniciones() {
+		return municiones;
+	}
+	
+	public void setMuniciones(int municiones) {
+		this.municiones = municiones;
+	}
+
+	public void setMunicionesPorSegundo(int municionesPorSegundo) {
+		this.municionesPorSegundo = municionesPorSegundo;
+	}
 
 }

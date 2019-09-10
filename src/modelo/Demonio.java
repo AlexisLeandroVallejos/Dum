@@ -1,7 +1,8 @@
 package modelo;
 
 public abstract class Demonio {
-	private int hp;
+	protected int hp;
+	
 	private int danio;
 
 	public int getHp() {
@@ -10,6 +11,9 @@ public abstract class Demonio {
 
 	public void serAtacadoPor(Marine marine, int distanciaAMi) {
 		marine.getArmaActiva().disparar(this, distanciaAMi);
+		if(estoyMuerto()) {
+			marine.recibirPuntos(puntosADar(distanciaAMi));
+		}
 	}
 
 	public void bajarHP(int danio) {
@@ -20,8 +24,14 @@ public abstract class Demonio {
 		return hp <= 0;
 	}
 
-	public int getDanio() {
-		return danio;
+	abstract int getDanio();
+	
+	public int puntosADar(int distanciaAMi) {
+		return 0;
+	}
+	
+	public void setHp(int hp) {
+		this.hp = hp;
 	}
 	
 }

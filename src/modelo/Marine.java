@@ -6,6 +6,7 @@ public class Marine {
 	private List<Arma> inventario;
 	private Arma armaActiva;
 	private int cantidadDeCartuchos;
+	private int puntos = 0 ;
 	
 	public void equipaArma(int atajo) {
 		armaActiva = obtenerArma(atajo);
@@ -45,6 +46,18 @@ public class Marine {
 	public boolean algunaArmaConLaMismaDescripcion(Arma otraArma) {
 		return inventario.stream()
 				.anyMatch(arma -> arma.tieneIgualDescripcion(otraArma));
+	}
+	
+	public int getPuntos() {
+		return puntos;
+	}
+	
+	public void recibirPuntos(int puntosARecibir) {
+		puntos += puntosARecibir;
+	}
+	
+	public void setArmaSeleccionada(Arma armaSeleccionada) {
+		this.armaActiva = armaSeleccionada;
 	}
 
 	

@@ -4,9 +4,9 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Jefe extends Demonio {
-	
+	private final int MAXIMA_DISTANCIA = 1000;
 	private int cantidadDeAtaquesParaEliminarme;
-	private List<Ataque> ataques; 
+	private List<Ataque> ataques; //cambiar esto a lista de armas
 	
 	@Override
 	public void serAtacadoPor(Marine marine, int distanciaAMi) {
